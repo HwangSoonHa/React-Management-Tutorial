@@ -1,7 +1,12 @@
+#이곳에서 설정한 것은 github에 공개적으로 올라가지 않도록 설정 할 수 있는 공간.
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 #database
 /database.json
+
+#upload
+/upload
 
 # dependencies
 /node_modules
