@@ -29,9 +29,23 @@ const styles = theme => ({
 
 class App extends Component {
 
-  state = {
-    customers : "",
-    completed:0
+  constructor(props){
+    super(props);
+    this.state = {
+      custoemrs:'',
+      completed:0
+    }
+  }
+
+  stateRefresh = () => { // 변경된 정보만 업데이트 되도록.(SPA에선 페이지 전체가 새로고침되면 문제가 생김.)
+    this.setState({
+      customers: '',
+      completed: 0
+    });
+
+    this.callApi()
+    .then(res => this.setState({customers:res})) //실행이 될 경우
+    .catch(err => console.log(err)); //오류가 날 경우
   }
 
   componentDidMount(){
@@ -94,7 +108,7 @@ class App extends Component {
             </TableBody>
           </Table>
         </Paper>
-        <CustomerAdd />
+        <CustomerAdd stateRefresh={this.stateRefresh}/>
       </div>
     );
   }

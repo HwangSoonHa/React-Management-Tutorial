@@ -18,7 +18,8 @@ class CustomerAdd extends React.Component{
         e.preventDefault()
         this.addCustomer()
             .then((response) => {
-                console.log(response.data)
+                console.log(response.data);
+                this.props.stateRefresh();
             });
         this.setState({
             file: null,
@@ -28,7 +29,6 @@ class CustomerAdd extends React.Component{
             job:'',
             fileName:''
         })
-        window.location.reload();
     }
 
     handleFileChange = (e) => {
